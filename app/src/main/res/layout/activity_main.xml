@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rltRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.forms.plainfly.MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.forms.plainfly.SkyLayout
+        android:id="@+id/ivSky"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        app:srcCompat="@mipmap/sky"
+        android:scaleType="fitXY"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivSkyLine"
+        app:srcCompat="@mipmap/skyline"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@+id/ivSky"
+        android:layout_height="80dp" />
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivMountain"
+        app:srcCompat="@mipmap/mountain"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@+id/ivSky"
+        android:layout_height="63dp" />
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivLand"
+        app:srcCompat="@mipmap/land"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@+id/ivSky"
+        android:layout_height="43dp" />
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivStarOne"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/ic_star_black_24dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivStarTwo"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/ic_star_black_24dp"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivStarThree"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/ic_star_black_24dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="16dp"/>
+    
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivAirPort"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@mipmap/airport"
+        android:layout_below="@+id/ivSky"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-25dp"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/ivPlane"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        app:srcCompat="@mipmap/plane"
+        android:layout_below="@+id/ivSky"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="-13dp"/>
+</RelativeLayout>
