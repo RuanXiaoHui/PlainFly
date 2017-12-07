@@ -8,7 +8,7 @@
     tools:context="com.forms.plainfly.MainActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.forms.plainfly.SkyLayout
+    <com.forms.plainfly.widget.SkyLayout
         android:id="@+id/ivSky"
         android:layout_width="match_parent"
         android:layout_height="175dp"
@@ -70,7 +70,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-25dp"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <com.forms.plainfly.widget.PlaneLayout
         android:id="@+id/ivPlane"
         android:layout_width="26dp"
         android:layout_height="26dp"

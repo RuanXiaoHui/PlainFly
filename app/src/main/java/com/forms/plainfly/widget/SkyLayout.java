@@ -1,4 +1,4 @@
-package com.forms.plainfly;
+package com.forms.plainfly.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.animation.OvershootInterpolator;
 import android.widget.RelativeLayout;
 
+import com.forms.plainfly.Constant;
 import com.forms.plainfly.utils.DensityUtil;
 
 /**

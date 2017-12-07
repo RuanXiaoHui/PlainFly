@@ -10,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.forms.plainfly.widget.PlaneLayout;
+import com.forms.plainfly.widget.SkyLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     private RelativeLayout rltRoot;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatImageView ivStarOne;
     private AppCompatImageView ivStarTwo;
     private AppCompatImageView ivStarThree;
+    private PlaneLayout ivPlane;
 
 
     @Override
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ivStarOne = (AppCompatImageView) findViewById(R.id.ivStarOne);
         ivStarTwo = (AppCompatImageView) findViewById(R.id.ivStarTwo);
         ivStarThree = (AppCompatImageView) findViewById(R.id.ivStarThree);
+        ivPlane= (PlaneLayout) findViewById(R.id.ivPlane);
         ivSky.setViews(ivSkyLine, ivMountain, ivLand);
         starStartAnim();
     }
@@ -62,11 +67,12 @@ public class MainActivity extends AppCompatActivity {
                             float percentValue = diffValue > Constant.MAX_MOVE_VALUE
                                     ? 1 : diffValue / Constant.MAX_MOVE_VALUE;
                             ivSky.setPercent(percentValue);
+                            ivPlane.setPercent(percentValue);
                         }
                         break;
                     case MotionEvent.ACTION_UP:
-                        //ivSky.setPercent(0);
                         ivSky.releaseView();
+                        ivPlane.setPercent(0);
                         break;
                 }
 
