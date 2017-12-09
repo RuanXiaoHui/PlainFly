@@ -3,6 +3,7 @@ package com.forms.plainfly;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatImageView ivLand;
     private AppCompatImageView ivStarOne;
     private AppCompatImageView ivStarTwo;
-    private AppCompatImageView ivStarThree;
+    private AppCompatImageView ivTree;
     private PlaneLayout ivPlane;
+    private float percentValue;  //下拉的百分比值
 
 
     @Override
@@ -43,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         ivLand = (AppCompatImageView) findViewById(R.id.ivLand);
         ivStarOne = (AppCompatImageView) findViewById(R.id.ivStarOne);
         ivStarTwo = (AppCompatImageView) findViewById(R.id.ivStarTwo);
-        ivStarThree = (AppCompatImageView) findViewById(R.id.ivStarThree);
         ivPlane= (PlaneLayout) findViewById(R.id.ivPlane);
+        ivTree= (AppCompatImageView) findViewById(R.id.ivTree);
         ivSky.setViews(ivSkyLine, ivMountain, ivLand);
         starStartAnim();
     }
@@ -58,13 +60,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (action) {
                     case MotionEvent.ACTION_DOWN:
                         mDownY = motionEvent.getY();
+                        ((Animatable)ivTree.getDrawable()).start();
                         break;
                     case MotionEvent.ACTION_MOVE:
                         float moveY = motionEvent.getY();
                         if (moveY >= mDownY) {
                             //向下拉
                             float diffValue = moveY - mDownY;
-                            float percentValue = diffValue > Constant.MAX_MOVE_VALUE
+                            percentValue = diffValue > Constant.MAX_MOVE_VALUE
                                     ? 1 : diffValue / Constant.MAX_MOVE_VALUE;
                             ivSky.setPercent(percentValue);
                             ivPlane.setPercent(percentValue);
@@ -72,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case MotionEvent.ACTION_UP:
                         ivSky.releaseView();
-                        ivPlane.setPercent(0);
+                        if (percentValue>0.3){
+                            ivPlane.playPlayFly();
+                        }
                         break;
                 }
 
@@ -173,12 +178,7 @@ public class MainActivity extends AppCompatActivity {
             obj2.setRepeatCount(ValueAnimator.INFINITE);
             obj2.start();
 
-            PropertyValuesHolder  pr5=PropertyValuesHolder.ofFloat("scaleX",1f,1.5f,0.8f,1.0f);
-            PropertyValuesHolder  pr6=PropertyValuesHolder.ofFloat("scaleY",1f,1.5f,0.8f,1.0f);
-            ObjectAnimator obj3=ObjectAnimator.ofPropertyValuesHolder(ivStarThree,pr5,pr6);
-            obj3.setDuration(2000);
-            obj3.setRepeatCount(ValueAnimator.INFINITE);
-            obj3.start();
+
         }
 
     }

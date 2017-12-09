@@ -3,6 +3,7 @@
     package="com.forms.plainfly">
 
     <application
+        android:name=".FlyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
