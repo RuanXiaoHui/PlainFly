@@ -6,7 +6,7 @@ import android.graphics.PointF;
 import com.forms.plainfly.utils.BezierUtil;
 
 /**
- * Created by formssi on 2017/12/8.
+ * Created by forms on 2017/12/8.
  */
 
 public class BezierEvaluator implements TypeEvaluator<PointF> {

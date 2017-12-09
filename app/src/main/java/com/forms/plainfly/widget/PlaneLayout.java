@@ -8,7 +8,6 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
-
 import com.forms.plainfly.BezierEvaluator;
 import com.forms.plainfly.utils.DensityUtil;
 import com.forms.plainfly.utils.ScreenUtils;
@@ -19,25 +18,21 @@ import com.forms.plainfly.utils.ScreenUtils;
 
 public class PlaneLayout extends AppCompatImageView {
 
-    private PointF mOldPoint;
-    private int startYOne;
-    private int startXOne;
-    private int endXOne;
-    private int endYOne;
-
-    private int endXTwo;
-    private int endYTwo;
-
-    private int endXThree;
-    private int endYThree;
-
-    private float skyHeight;
-    private float planeHeight;
-
-    private ValueAnimator animatorDown;
-    private ValueAnimator animatorUp;
-    private ValueAnimator animatorLine;
-    private AnimatorSet animator;
+    private PointF mOldPoint;    //上一次记录的点，用在飞机切斜角度上
+    private int startYOne;       //第一个点开始点X坐标
+    private int startXOne;       //第一个点开始点Y坐标
+    private int endXOne;         //第一个点结束点X坐标
+    private int endYOne;         //第一个点开始点X坐标
+    private int endXTwo;         //第二个点结束点X坐标
+    private int endYTwo;         //第二个点开始点X坐标
+    private int endXThree;       //第三个点结束点X坐标
+    private int endYThree;       //第三个点开始点X坐标
+    private float skyHeight;     //天空高度
+    private float planeHeight;   //飞机高度
+    private ValueAnimator animatorDown;       //起升动画
+    private ValueAnimator animatorUp;         //降落动画
+    private ValueAnimator animatorLine;       //水平动画
+    private AnimatorSet animator;             //动画集
 
     public PlaneLayout(Context context) {
         this(context, null);
@@ -193,5 +188,4 @@ public class PlaneLayout extends AppCompatImageView {
         params.topMargin = topMargin;
         setLayoutParams(params);
     }
-
 }
