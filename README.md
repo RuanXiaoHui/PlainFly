@@ -8,7 +8,7 @@
 三阶公式： <html><body><br/></bory></html>
 (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3  t=[0,1] <html><body><br/> <br/><br/></body></html>
 
-<html><body><table border="0" cellspacing="1" cellpadding="0" align="top" bgcolor="#C0A45B" valign="middle" width="90%"><h2 align="center">贝塞尔曲线公式</h2><tr height=70 width="100%" bgcolor="#F9EAC2"><td width="33%">一阶贝塞尔曲线</td><td width="67%" align="center">(1-t)P0 + tP1    t=[0,1]</td></tr>
+<html><body><table border="0" cellspacing="1" cellpadding="0" align="top" bgcolor="#C0A45B" valign="middle" width="100%"><h2 align="center">贝塞尔曲线公式</h2><tr height=70 width="100%" bgcolor="#F9EAC2"><td width="33%">一阶贝塞尔曲线</td><td width="67%" align="center">(1-t)P0 + tP1    t=[0,1]</td></tr>
 <tr height="70" width="100%" bgcolor="#FAF3E1"><td>二阶贝塞尔曲线</td><td align="center">(1-t)^2P0 + 2(1-t)tP1 + t^2P2 t=[0,1] </td></tr><tr height="70" width="100%" bgcolor="#F9EAC2"><td>三阶贝塞尔曲线/td><td align="center">(1-t)^3P0 + 3*(1-t)^2tP1 + 3(1-t)t^2P2 + t^3*P3 t=[0,1] </td></tr></table></body></html>
 
 关于other：<html><body><br/></body></html>
