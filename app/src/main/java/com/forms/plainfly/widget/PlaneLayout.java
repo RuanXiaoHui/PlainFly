@@ -1,5 +1,7 @@
 package com.forms.plainfly.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -8,6 +10,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
+
 import com.forms.plainfly.BezierEvaluator;
 import com.forms.plainfly.utils.DensityUtil;
 import com.forms.plainfly.utils.ScreenUtils;
@@ -20,19 +23,20 @@ public class PlaneLayout extends AppCompatImageView {
 
     private PointF mOldPoint;    //上一次记录的点，用在飞机切斜角度上
     private int startYOne;       //第一个点开始点X坐标
-    private int startXOne;       //第一个点开始点Y坐标
-    private int endXOne;         //第一个点结束点X坐标
-    private int endYOne;         //第一个点开始点X坐标
-    private int endXTwo;         //第二个点结束点X坐标
-    private int endYTwo;         //第二个点开始点X坐标
-    private int endXThree;       //第三个点结束点X坐标
-    private int endYThree;       //第三个点开始点X坐标
+    private int startXOne;       //第一个开始点Y坐标
+    private int endXOne;         //第一个结束点X坐标
+    private int endYOne;         //第一个结束点Y坐标
+    private int endXTwo;         //第二个结束点X坐标
+    private int endYTwo;         //第二个结束点Y坐标
+    private int endXThree;       //第三个结束点X坐标
+    private int endYThree;       //第三个结束点Y坐标
     private float skyHeight;     //天空高度
     private float planeHeight;   //飞机高度
     private ValueAnimator animatorDown;       //起升动画
     private ValueAnimator animatorUp;         //降落动画
     private ValueAnimator animatorLine;       //水平动画
     private AnimatorSet animator;             //动画集
+    public static boolean ANIMATION_END=true;
 
     public PlaneLayout(Context context) {
         this(context, null);
@@ -71,11 +75,16 @@ public class PlaneLayout extends AppCompatImageView {
         drawBezierLine();
     }
 
+    /**
+     * 飞机在未起飞之前的旋转角度
+     * */
     public void setPercent(float percent) {
         this.setRotation(-45 * percent);
     }
 
-    //绘制上升路径
+    /**
+     * 绘制上升路径
+     * **/
     private void drawBezierUp() {
         endXOne = ScreenUtils.getScreenWidth(getContext()) + 100;
         endYOne = 50;
@@ -107,11 +116,19 @@ public class PlaneLayout extends AppCompatImageView {
                 mOldPoint = currentPoint;
             }
         });
+        valueUp.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                ANIMATION_END=false;
+            }
+        });
         valueUp.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorUp=valueUp;
     }
 
-    //绘制下落路径
+    /****
+     * 绘制下落路径
+     * */
     private void drawBezierDown() {
 
         PointF pointControl = new PointF(230, 50);
@@ -141,7 +158,9 @@ public class PlaneLayout extends AppCompatImageView {
         animatorDown=valueDown;
     }
 
-    //绘制下落路径
+    /**
+     * 绘制水平路径
+     * **/
     private void drawBezierLine() {
 
         PointF pointControl = new PointF(0, endYThree);
@@ -165,6 +184,13 @@ public class PlaneLayout extends AppCompatImageView {
 
                 setRotation((float) (angle * 180 / Math.PI));
                 mOldPoint = currentPoint;
+            }
+        });
+        valueLine.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                //动画执行结束
+                ANIMATION_END=true;
             }
         });
         valueLine.setInterpolator(new AccelerateDecelerateInterpolator());

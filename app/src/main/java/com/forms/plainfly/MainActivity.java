@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case MotionEvent.ACTION_MOVE:
                         float moveY = motionEvent.getY();
-                        if (moveY >= mDownY) {
+                        if (moveY >= mDownY&&PlaneLayout.ANIMATION_END) {
                             //向下拉
                             float diffValue = moveY - mDownY;
                             percentValue = diffValue > Constant.MAX_MOVE_VALUE
@@ -74,9 +74,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case MotionEvent.ACTION_UP:
-                        ivSky.releaseView();
-                        if (percentValue>0.3){
-                            ivPlane.playPlayFly();
+                        if (PlaneLayout.ANIMATION_END){
+                            ivSky.releaseView();
+                            if (percentValue>0.7){
+                                ivPlane.playPlayFly();
+                                percentValue=0;
+                            }else {
+                                ivPlane.setPercent(0);
+                            }
                         }
                         break;
                 }
